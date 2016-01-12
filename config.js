@@ -35,6 +35,7 @@ var CONFIG = {
     lien_parc: 'www.cevennes-parcnational.fr',
     points: 'http://pnx.espaces-naturels.fr/signature/pointilles_pnc.png',
     parc: 'Parc national des Cévennes',
+    tel: 'Tel : +33 (0)4 66 49 53 XX - Mobile : +33 (0)6 XX XX XX XX',
     facebook: '<A href="https://www.facebook.com/Parc.national.des.Cevennes"><IMG src="http://pnx.espaces-naturels.fr/signature/signature_facebook.png" alt="" id="Facebook" style="BORDER:0px"></A>',
     twitter: '<A href="https://twitter.com/pnCevennes"><IMG src="http://pnx.espaces-naturels.fr/signature/signature_twitter.png" alt="" id="Twitter" style="BORDER:0px"></A>',
     youtube: '<A href="https://www.youtube.com/channel/UCnfhAcy-fgEj7TCP4qxzN6g"><IMG src="http://pnx.espaces-naturels.fr/signature/signature_youtube.png" alt="" id="YouTube" style="BORDER:0px"></A>',

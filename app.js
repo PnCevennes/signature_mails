@@ -6,7 +6,7 @@ app.controller('mainCtrl', function(){
     this.prenom = '';
     this.nom = '';
     this.fonction = '';
-    this.tel = 'Tel : +33 (0)X XX XX XX XX - Mobile : +33 (0)6 XX XX XX XX';
+    this.tel = CONFIG.tel;
 
     var calc = angular.bind(this, function(){
         var prenom_f = this.prenom[0].toUpperCase() + this.prenom.slice(1).toLowerCase();
