@@ -14,20 +14,20 @@
         <form name="generateur" novalidate>
             <div class="form">
                 <div class="form-group input-group">
-                    <label class="input-group-addon" for="prenom">Prénom</label>
-                    <input class="form-control" id="prenom" type="text" ng-model="c.prenom" ng-model-options="{getterSetter: true}" placeholder="Paul" required="required"/>
+                    <label class="input-group-addon" for="_prenom">Prénom</label>
+                    <input class="form-control" id="_prenom" type="text" ng-model="c.prenom" placeholder="Paul" required="required"/>
                 </div>      
                 <div class="form-group input-group">
-                    <label class="input-group-addon" for="nom">Nom</label>
-                    <input class="form-control" id="nom" type="text" ng-model="c.nom" ng-model-options="{getterSetter: true}" placeholder="Hochon" required="required"/>
+                    <label class="input-group-addon" for="_nom">Nom</label>
+                    <input class="form-control" id="_nom" type="text" ng-model="c.nom" placeholder="Hochon" required="required"/>
                 </div>
                 <div class="form-group input-group">
-                    <label class="input-group-addon" for="fonction">Fonction</label>
-                    <input class="form-control" id="fonction" type="text" ng-model="c.fonction" ng-model-options="{getterSetter: true}" placeholder="Factotum" required="required"/>
+                    <label class="input-group-addon" for="_fonction">Fonction</label>
+                    <input class="form-control" id="_fonction" type="text" ng-model="c.fonction" placeholder="Factotum" required="required"/>
                 </div>
                 <div class="form-group input-group">
-                    <label class="input-group-addon" for="telephone">Téléphone(s)</label>
-                    <input class="form-control" id="telephone" type="text" ng-model="c.tel" ng-model-options="{getterSetter: true}" placeholder="Tél : +33 (0)4 66 49 XX XX - Mobile : +33 (0)6 XX XX XX XX" />
+                    <label class="input-group-addon" for="_telephone">Téléphone(s)</label>
+                    <input class="form-control" id="_telephone" type="text" ng-model="c.tel" placeholder="Tél : +33 (0)4 66 49 XX XX - Mobile : +33 (0)6 XX XX XX XX" />
                 </div>
                 <div>
                     <button class="btn btn-success" type="button" ng-click="c.save()" ng-disabled="generateur.$invalid">Enreg.</button>
