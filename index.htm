@@ -2,6 +2,8 @@
     <head>
         <meta charset="utf8" />
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script src="config.js"></script>
         <script src="app.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
@@ -36,50 +38,66 @@
         </form>
     </div>
     <div class="container">
-        <h1>Générer sa signature</h1>
-        <p>
-        Il suffit de remplir le formulaire avec les informations demandées.
-        </p>
-        <p>
-        Le nom, le prénom et la fonction peuvent être écrits en minuscule. Ils seront reformatés pour s'afficher joliment.
-        </p>
-        <p>
-        La ligne "Téléphone" se remplit sous la forme "Tel : +33 (0)1 23 45 67 89"<br />
-        Il est important de bien mettre l'indicatif Fr (+33) et de séparer les chiffres par paire séparées par une espace.
-        </p>
-        <p>
-        Afin de bien respecter la norme d'affichage, il est demandé de séparer les différents numéros de téléphone par un " - "
-        </p>
-        <p>
-        Appuyer ensuite sur le bouton "Enreg." pour enregistrer le fichier signature (sélectionner "enregistrer le fichier")
-        </p>
-    </div>
-    <div class="container">
-        <h1>Comment ajouter sa signature à Thunderbird</h1>
-        <p>
-            Cliquer sur votre adresse e-mail (au dessus du dossier "Courrier entrant").
-        </p>
-        <p>
-            Sur la page affichée, cliquer sur "Voir les paramètres pour ce compte".
-        </p>
-        <p>
-            Dans la fenetre qui s'ouvre, cocher la case "Apposer la signature à partir d'un fichier, puis sélectionner le fichier que vous venez d'enregistrer qui doit se trouver dans votre dossier "Téléchargements" sous le nom "signature_prenom_nom.htm".
-        </p>
-    </div>
-    <div class="container">
-        <h1>Comment ajouter sa signature à Zimbra</h1>
-        <p>
-            Cliquer sur l'onglet "Préférences", puis dans le menu de gauche, sur "Signatures"
-        </p>
-        <p>
-            Dans la fenetre qui apparait, sur la droite, cliquer sur le bouton "format texte simple" et sélectionner "format HTML"
-        </p>
-        <p>
-            Ouvrez le fichier téléchargé (ou simplement sur cette page, rappuyez sur "Enreg." et sélectionner l'option ouvrir avec votre navigateur).
-        </p>
-        <p>
-            La page "signature" affichée, tout séléctionner (ctrl-A), copier (ctrl-C) et coller dans la zone de texte de zimbra (ctrl-V), en supprimant l'existant si nécessaire. Régler l'utilisation des signatures, puis, pour valider les modifications, appuyer sur "Enregistrer".
-        </p>
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#gen_signature" data-toggle="tab" >Générer sa signature</a></li>
+            <li><a href="#thunderbird" data-toggle="tab" >Ajouter sa signature dans Thunderbird</a></li>
+            <li><a href="#zimbra" data-toggle="tab" >Ajouter sa signature dans Zimbra</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="gen_signature">
+                <h1>Générer sa signature</h1>
+                <p>
+                Il suffit de remplir le formulaire avec les informations demandées.
+                </p>
+                <p>
+                Le nom, le prénom et la fonction peuvent être écrits en minuscule. Ils seront reformatés pour s'afficher joliment.
+                </p>
+                <p>
+                La ligne "Téléphone" se remplit sous la forme "Tel : +33 (0)1 23 45 67 89"<br />
+                Il est important de bien mettre l'indicatif Fr (+33) et de séparer les chiffres par paire séparées par une espace.
+                </p>
+                <p>
+                Afin de bien respecter la norme d'affichage, il est demandé de séparer les différents numéros de téléphone par un " - "
+                </p>
+                <p>
+                Appuyer ensuite sur le bouton "Enreg." pour enregistrer le fichier signature (sélectionner "enregistrer le fichier")
+                </p>
+            </div>
+            <div class="tab-pane" id="thunderbird">
+                <h1>Comment ajouter sa signature à Thunderbird</h1>
+                <ol>
+                    <li>
+                        Cliquer sur votre adresse e-mail (au dessus du dossier "Courrier entrant").
+                    </li>
+                    <li>
+                        Sur la page affichée, cliquer sur "Voir les paramètres pour ce compte".
+                    </li>
+                    <li>
+                        Dans la fenetre qui s'ouvre, cocher la case "Apposer la signature à partir d'un fichier, puis sélectionner le fichier que vous venez d'enregistrer qui doit se trouver dans votre dossier "Téléchargements" sous le nom "signature_prenom_nom.htm".
+                    </li>
+                </ol>
+                <p>
+                    Il est recommandé de copier ou déplacer le fichier signature hors du dossier "Téléchargements". 
+                </p>
+            </div>
+            <div class="tab-pane" id="zimbra">
+                <h1>Comment ajouter sa signature à Zimbra</h1>
+                <ol>
+                    <li>
+                        Cliquer sur l'onglet "Préférences", puis dans le menu de gauche, sur "Signatures"
+                    </li>
+                    <li>
+                        Dans la fenetre qui apparait, sur la droite, cliquer sur le bouton "format texte simple" et sélectionner "format HTML"
+                    </li>
+                    <li>
+                        Ouvrez le fichier téléchargé (ou simplement sur cette page, rappuyez sur "Enreg." et sélectionnez l'option ouvrir avec votre navigateur).
+                    </li>
+                    <li>
+                        La page "signature" affichée, tout séléctionner (ctrl-A), copier (ctrl-C) et coller dans la zone de texte de zimbra (ctrl-V), en supprimant l'existant si nécessaire. Régler l'utilisation des signatures, puis, pour valider les modifications, appuyer sur "Enregistrer".
+                    </li>
+                </ol>
+            </div>
+        </div>
     </div>
     </body>
 </html>
