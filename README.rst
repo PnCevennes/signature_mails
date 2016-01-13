@@ -1,6 +1,19 @@
+
+
 Générateur simple de signature mail
 
 Le template de base est celui fourni par PNF pour les signatures.
+
+Installation
+============
+::
+
+    cd ~
+    wget https://github.com/PnCevennes/signature_mails/archive/master.zip
+    unzip master.zip
+    cd signature_mails
+    cp config.js config.js.sample
+
 
 Modifier le fichier `config.js` pour adapter les informations aux différents PN.
 
