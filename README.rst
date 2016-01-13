@@ -8,7 +8,6 @@ Installation
 ============
 ::
 
-    cd ~
     wget https://github.com/PnCevennes/signature_mails/archive/master.zip
     unzip master.zip
     cd signature_mails
