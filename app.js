@@ -8,10 +8,18 @@ app.controller('mainCtrl', function(){
     this.fonction = '';
     this.tel = CONFIG.tel;
 
-    var calc = angular.bind(this, function(){
+    var calc = angular.bind(this, function(with_logos){
+        console.log(with_logos);
         var prenom_f = this.prenom[0].toUpperCase() + this.prenom.slice(1).toLowerCase();
         var fonction_f= this.fonction[0].toUpperCase() + this.fonction.slice(1).toLowerCase();
-        var output = TEMPLATE
+        if(with_logos){
+            var tmp = TEMPLATE
+                .replace('__APP_LOGOS__', '<p>__CNF_FB__ __CNF_TW__ __CNF_YT__ __CNF_PT__ __CNF_IG__ </p>');
+        }
+        else{
+            var tmp = TEMPLATE.replace('__APP_LOGOS__', '');
+        }
+        var output = tmp
             .replace(/__CNF_PARC__/g, CONFIG.parc)
             .replace(/__CNF_LIEN_PARC__/g, CONFIG.lien_parc)
             .replace(/__CNF_LOGO__/g, CONFIG.logo)
@@ -28,8 +36,8 @@ app.controller('mainCtrl', function(){
         return output
     });
 
-    this.save = function(){
-        var data = calc();
+    this.save = function(with_logos){
+        var data = calc(with_logos);
         var dwn = document.createElement('a');
         dwn.setAttribute('href', 'data:text/html,' + encodeURIComponent(data));
         dwn.setAttribute('download', 'signature_' + this.prenom.toLowerCase() + '_' + this.nom.toLowerCase() + '.htm');

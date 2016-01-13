@@ -32,7 +32,8 @@
                     <input class="form-control" id="_telephone" type="text" ng-model="c.tel" placeholder="Tél : +33 (0)4 66 49 XX XX - Mobile : +33 (0)6 XX XX XX XX" />
                 </div>
                 <div>
-                    <button class="btn btn-success" type="button" ng-click="c.save()" ng-disabled="generateur.$invalid">Générer la signature</button>
+                    <button class="btn btn-success" type="button" ng-click="c.save(true)" ng-disabled="generateur.$invalid">Générer la signature Thunderbird</button>
+                    <button class="btn btn-success" type="button" ng-click="c.save(false)" ng-disabled="generateur.$invalid">Générer la signature Zimbra</button>
                 </div>
             </div>
         </form>
@@ -62,7 +63,7 @@
                 Afin de bien respecter la norme d'affichage, il est demandé de séparer les différents numéros de téléphone par un " - "
                 </p>
                 <p>
-                Appuyer ensuite sur le bouton vert "Générer la signature" pour enregistrer le fichier signature (sélectionner "enregistrer le fichier")
+                Appuyer ensuite sur le bouton vert "Générer la signature Thunderbird" pour enregistrer le fichier signature (sélectionner "enregistrer le fichier")
                 </p>
                 <p>
                 Le fichier sera alors enregistré dans votre dossier "Téléchargements" sous le nom "signature_prenom_nom.htm".<br />Il est recommandé de déplacer ce fichier dans un dossier différent.
@@ -84,18 +85,22 @@
             </div>
             <div class="tab-pane" id="zimbra">
                 <h2>Comment ajouter sa signature à Zimbra</h2>
+                <p>La signature zimbra est une version allégée de la signature thunderbird. Sans les différents logos des réseaux sociaux.
                 <ol>
                     <li>
-                        Cliquer sur l'onglet "Préférences", puis dans le menu de gauche, sur "Signatures"
+                        Sur cette page, cliquez sur le bouton "Générer la signature Zimbra" puis choisissez de l'ouvrir avec votre navigateur</li>
                     </li>
                     <li>
-                        Dans la fenetre qui apparait, sur la droite, cliquer sur le bouton "format texte simple" et sélectionner "format HTML"
+                        Dans Zimbra, cliquez sur l'onglet "Préférences", puis dans le menu de gauche, sur "Signatures"
+                    </li>
+                    <li>
+                        Dans la fenetre qui apparait, sur la droite, cliquez sur le bouton "format texte simple" et sélectionnez "format HTML"
                     </li>
                     <li>
                         Ouvrez le fichier téléchargé (ou simplement sur cette page, rappuyez sur "Générer la signature" et sélectionnez l'option ouvrir avec votre navigateur).
                     </li>
                     <li>
-                        La page "signature" affichée, tout séléctionner (ctrl-A), copier (ctrl-C) et coller dans la zone de texte de zimbra (ctrl-V), en supprimant l'existant si nécessaire. Régler l'utilisation des signatures, puis, pour valider les modifications, appuyer sur "Enregistrer".
+                        La page "signature" affichée, séléctionnez tout (ctrl-A), copiez (ctrl-C) et collez dans la zone de texte de zimbra (ctrl-V), en supprimant l'existant si nécessaire. Réglez l'utilisation des signatures, puis, pour valider les modifications, appuyer sur "Enregistrer".
                     </li>
                 </ol>
             </div>
