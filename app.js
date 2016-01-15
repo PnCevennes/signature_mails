@@ -7,11 +7,20 @@ app.controller('mainCtrl', function(){
     this.nom = '';
     this.fonction = '';
     this.tel = CONFIG.tel;
+    this.check_case = true;
 
     var calc = angular.bind(this, function(with_logos){
         console.log(with_logos);
-        var prenom_f = this.prenom[0].toUpperCase() + this.prenom.slice(1).toLowerCase();
-        var fonction_f= this.fonction[0].toUpperCase() + this.fonction.slice(1).toLowerCase();
+        if(this.check_case){
+            var prenom_f = this.prenom[0].toUpperCase() + this.prenom.slice(1).toLowerCase();
+            var fonction_f= this.fonction[0].toUpperCase() + this.fonction.slice(1).toLowerCase();
+            var nom_f = this.nom.toUpperCase();
+        }
+        else{
+            var prenom_f = this.prenom;
+            var fonction_f= this.fonction;
+            var nom_f = this.nom;
+        }
         if(with_logos){
             var tmp = TEMPLATE
                 .replace('__APP_LOGOS__', '<p>__CNF_FB__ __CNF_TW__ __CNF_YT__ __CNF_PT__ __CNF_IG__ </p>');
@@ -30,7 +39,7 @@ app.controller('mainCtrl', function(){
             .replace(/__CNF_PT__/g, CONFIG.pinterest)
             .replace(/__CNF_IG__/g, CONFIG.instagram)
             .replace(/__PRENOM__/g, prenom_f)                                
-            .replace(/__NOM__/g, this.nom.toUpperCase())                                
+            .replace(/__NOM__/g, nom_f)                                
             .replace(/__FONCTION__/g, fonction_f)                                
             .replace(/__TEL__/g, this.tel);                                
         return output
