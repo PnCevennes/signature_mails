@@ -10,6 +10,7 @@ Installation
 
     wget https://github.com/PnCevennes/signature_mails/archive/master.zip
     unzip master.zip
+    mv signature_mails-master/ signature_mails
     cd signature_mails
     cp config.js config.js.sample
 
