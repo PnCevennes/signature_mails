@@ -1,45 +1,67 @@
 <html ng-app="email">
+
+
     <head>
         <meta charset="utf8" />
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
         <script src="config.js"></script>
         <script src="app.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 
-        <link rel="stylesheet" href="css/screen.css" media="screen" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     </head>
-    <body ng-controller="mainCtrl as c">
+
+
+    <body ng-controller="mainCtrl as vm">
     <div class="container">
         <h1>Générateur de signature Mail</h1>
         <form name="generateur" novalidate>
             <div class="form">
                 <div class="form-group input-group">
                     <label class="input-group-addon" for="_prenom">Prénom</label>
-                    <input class="form-control" id="_prenom" type="text" ng-model="c.prenom" placeholder="Paul" required="required"/>
-                </div>      
+                    <input class="form-control" id="_prenom" type="text" ng-model="vm.prenom" placeholder="Paul" required="required"/>
+                </div>
                 <div class="form-group input-group">
                     <label class="input-group-addon" for="_nom">Nom</label>
-                    <input class="form-control" id="_nom" type="text" ng-model="c.nom" placeholder="Hochon" required="required"/>
+                    <input class="form-control" id="_nom" type="text" ng-model="vm.nom" placeholder="Hochon" required="required"/>
                 </div>
                 <div class="form-group input-group">
                     <label class="input-group-addon" for="_fonction">Fonction</label>
-                    <input class="form-control" id="_fonction" type="text" ng-model="c.fonction" placeholder="Factotum" required="required"/>
+                    <input class="form-control" id="_fonction" type="text" ng-model="vm.fonction" placeholder="Factotum" required="required"/>
                 </div>
                 <div class="form-group input-group">
                     <label class="input-group-addon" for="_telephone">Téléphone(s)</label>
-                    <input class="form-control" id="_telephone" type="text" ng-model="c.tel" placeholder="Tél : +33 (0)4 66 49 XX XX - Mobile : +33 (0)6 XX XX XX XX" />
+                    <input class="form-control" id="_telephone" type="text" ng-model="vm.tel" placeholder="Tél : +33 (0)4 66 49 XX XX - Mobile : +33 (0)6 XX XX XX XX" />
                 </div>
                 <div class="form-group">
-                    <input id="_checkcase" type="checkbox" ng-model="c.check_case" />
+                    <input id="_checkcase" type="checkbox" ng-model="vm.check_case" />
                     <label for="_checkcase"> Corriger automatiquement la casse</label>
                 </div>
                 <div>
-                    <button class="btn btn-success" type="button" ng-click="c.save(true)" ng-disabled="generateur.$invalid">Générer la signature</button>
+                    <button class="btn btn-success" type="button" ng-click="vm.save(true)" ng-disabled="generateur.$invalid">Générer la signature</button>
                 </div>
+
             </div>
         </form>
+
+        <div>
+            <h1>Prévisualisation</h1>
+
+            <select ng-model="vm.template" >
+              <option ng-repeat="template in vm.templates"
+                      ng-selected="template === vm.template"
+              >
+                     {{template}}
+              </option>
+            </select>
+
+            <div id="preview" ng-include="vm.template.trim() + '.html'"></div>
+
+        </div>
+
     </div>
     <div class="well container">
         <h1>Explications</h1>
@@ -90,7 +112,7 @@
                 <h2>Comment ajouter sa signature à Zimbra</h2>
                 <ol>
                     <li>
-                        Dans Zimbra : 
+                        Dans Zimbra :
                         <ol>
                             <li>cliquez sur l'onglet "Préférences", puis dans le menu de gauche, sur "Signatures"</li>
                             <li>Dans la fenetre qui apparait, sur la droite, cliquez sur le bouton "format texte simple" et sélectionnez "format HTML"</li>
