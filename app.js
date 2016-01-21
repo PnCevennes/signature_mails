@@ -1,58 +1,48 @@
 var app = angular.module('email', []);
 
-app.controller('mainCtrl', function(){
-    
+app.controller('mainCtrl', function($sce){
 
-    this.prenom = '';
-    this.nom = '';
-    this.fonction = '';
-    this.tel = CONFIG.tel;
-    this.check_case = true;
+    var vm = this;
+    angular.extend(vm, CONFIG);
 
-    var calc = angular.bind(this, function(with_logos){
-        console.log(with_logos);
-        if(this.check_case){
-            var prenom_f = this.prenom[0].toUpperCase() + this.prenom.slice(1).toLowerCase();
-            var fonction_f= this.fonction[0].toUpperCase() + this.fonction.slice(1).toLowerCase();
-            var nom_f = this.nom.toUpperCase();
-        }
-        else{
-            var prenom_f = this.prenom;
-            var fonction_f= this.fonction;
-            var nom_f = this.nom;
-        }
-        if(with_logos){
-            var tmp = TEMPLATE
-                .replace('__APP_LOGOS__', '<p>__CNF_FB__ __CNF_TW__ __CNF_YT__ __CNF_PT__ __CNF_IG__ </p>');
-        }
-        else{
-            var tmp = TEMPLATE.replace('__APP_LOGOS__', '');
-        }
-        var output = tmp
-            .replace(/__CNF_PARC__/g, CONFIG.parc)
-            .replace(/__CNF_LIEN_PARC__/g, CONFIG.lien_parc)
-            .replace(/__CNF_LOGO__/g, CONFIG.logo)
-            .replace(/__CNF_POINTS__/g, CONFIG.points)
-            .replace(/__CNF_FB__/g, CONFIG.facebook)
-            .replace(/__CNF_TW__/g, CONFIG.twitter)
-            .replace(/__CNF_YT__/g, CONFIG.youtube)
-            .replace(/__CNF_PT__/g, CONFIG.pinterest)
-            .replace(/__CNF_IG__/g, CONFIG.instagram)
-            .replace(/__PRENOM__/g, prenom_f)                                
-            .replace(/__NOM__/g, nom_f)                                
-            .replace(/__FONCTION__/g, fonction_f)                                
-            .replace(/__TEL__/g, this.tel);                                
-        return output
-    });
+    vm.template = vm.templates[0];
 
-    this.save = function(with_logos){
-        var data = calc(with_logos);
+    vm.facebook = $sce.trustAs('html', vm.facebook);
+    vm.pinterest = $sce.trustAs('html', vm.pinterest);
+    vm.twitter = $sce.trustAs('html', vm.twitter);
+    vm.instagram = $sce.trustAs('html', vm.instagram);
+    vm.youtube = $sce.trustAs('html', vm.youtube);
+
+    vm.formatName = function(name){
+        if(vm.check_case && name){
+            [' ', '-'].forEach(function(sep){
+                var chunks = name.split(sep).map(function(e){
+                    return e[0].toUpperCase() + e.slice(1);
+                })
+                name = chunks.join(sep);
+                return name;
+            });
+        }
+        return name;
+    }
+
+    vm.formatLastName = function(name){
+        if(vm.check_case && name){
+            return name.toUpperCase();
+        }
+        return name;
+    }
+
+    vm.save = function(with_logos){
+        var data = document.getElementById('preview').innerHTML;
+
+        data = '<HTML> <HEAD> <meta charset="utf8" /> </HEAD>' + data + '</BODY> </HTML>';
+
         var dwn = document.createElement('a');
+
         dwn.setAttribute('href', 'data:text/html,' + encodeURIComponent(data));
-        dwn.setAttribute('download', 'signature_' + this.prenom.toLowerCase() + '_' + this.nom.toLowerCase() + '.htm');
-        dwn.style.display = 'none';
+        dwn.setAttribute('download', 'signature_' + vm.prenom.toLowerCase() + '_' + vm.nom.toLowerCase() + '.htm');
         document.body.appendChild(dwn);
         dwn.click();
-        document.body.removeChild(dwn);
     }
 });
