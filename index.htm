@@ -50,7 +50,7 @@
         <div>
             <h1>Prévisualisation</h1>
 
-            <select ng-model="vm.template" >
+            <select ng-model="vm.template" ng-if="vm.templates.length>1" >
               <option ng-repeat="template in vm.templates"
                       ng-selected="template === vm.template"
               >
